@@ -59,7 +59,7 @@ O Backend é formado pelo servidor, banco de dados, lógica de programação com
 ### Principais Tecnologias Linguagens de programação: 
  Ferramentas usadas para escrever o código do servidor, como Python, Node.js (JavaScript), Java e PHP.APIs: Os "caminhos" que permitem que o que você vê no celular converse com o servidor.
 
- ### Setores que mais contratam
+### Setores que mais contratam
 - Fintechs e Bancos:
 Segurança, transações, alta escala 
 
