@@ -136,3 +136,74 @@ O PHP de fato é uma das linguagens de programação mais populares da atualidad
 
 #### Criando minha primeira aplicação em PHP
 
+1. Antes de começar a codar:
+
+- Preparar meu VSCODE
+    - Criar um Profile próprio para PHP.
+    - Instalar extensões necessárias para transformar o VSCODE em uma IDE.
+        - PHP Intelephense -> Permite a utilização de Snippets(Atalhos de código)
+        - PHP Debug -> Ajuda a encontrar erros de código
+        - PHP Cs fixer -> Formatação de códigos (Identação)
+        - PHP Server -> Ajuda na criação de um servidor local para PHP
+    - Desabilitamos o PHP Nativo do VSCODE (@builtin PHP)
+
+2. Hello World (Muito importante)
+
+##### Estudo de variáveis e constantes em PHP
+
+Declarar variáveis é alocar um espaço na memória que permite a inclusão e manipulação de dados.
+
+**Variáveis** 
+
+- Devem ser declaradas usando "$" antes do nome da variável
+- São não tipadas (não precisa declarar o tipo dela na criação) 
+- Podem ser String, Numéricas (interger e float) e Booleanas e Nulas. Não permite declaração de Undefined
+- Regra de ouro: Usar o "declare(strict_types=1);" na primeira linha do arquivo; => Blinda o sistema contra conflitos de tipos de variáveis 
+
+**Constantes**
+
+- Não podem ser mudadas ou redeclaradas após a criação
+- Pode ser criadas usando o "const" ou o "define"
+- Não permite interpolação
+
+##### Estudo de operadores
+
+**Aritméticos**: São usados para realizar cálculos
+
+|Operador | Nome | Exemplo | Resultado |
+| - | - | - | - |
+| + | Adição | 10+5 | 15 |
+| - | Subtração | 10-5 | 5 |
+| * |Multiplicação | 10*5 | 50 |
+| / | Divisão | 10/5 | 2 |
+| % | Modulo(Resto) | 10%3 | 1 (10 div 3 da 3, sobra 1) |
+| ** | Expoente | 2**3 | 8 (2 elevado a 3) |
+ obs: O operador & é o melhor amigo de um programador, permite ordenar listas e organizar fila e pilhas
+
+**Relacionais**:  Permite o relacionamento entre dois ou mais valores, o resultado de uma operação é sempre uma booleana (True or False).
+
+| Operador | Significado | Exemplo | Resultado |
+| - | - | - | - |
+| > | Maior que | 18 > 18 | False |
+| >= | Maior ou igual a | 18 >= 18 | True |
+| < | Menor que | 10 < 20 | True |
+| <= | Menor ou igual a | 10 <= 5 | False |
+| == | Comparação de valor | "10" == 10 | True |
+| === | Comparação estrita | "10" === 10 | False |
+| != | Diferente | "10" != 10 | False |
+| !== | Estritamente diferente | "10" !== 10 | True |
+
+
+**Lógicos**: Permite a combinação entre sentenças. 
+
+- Operador AND (E) => && : para o resultado ser verdadeiro, todas as combinações precisam ser verdadeiras
+    - True && True = True
+    - True && True = False
+
+- Operador OR (OU) => || : para o resultado ser verdadeiro, basta apenas uma condição ser verdadeira
+    - False || True = True
+    - False || False = False
+
+- Operador NOT (NÃO) => ! : inverte a lógica da operação
+    - !True = False
+    - !False = True
