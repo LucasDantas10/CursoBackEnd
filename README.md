@@ -259,4 +259,5 @@ if($valorCompra > 100){
     $valorFinal = $valorCompra * 0.95;
 }
 
+
 ```

@@ -44,6 +44,7 @@ declare(strict_types=1); //blinda o sistema contra mistura acidentais de tipos d
     echo "Nome da empresa: " . EMPRESA . "<br>";
     echo "Site: " . SITE . "<br>";
 
+    
     // Tentando alterar o valor de uma constante, isso irá gerar um erro, pois constanes não podem ser alteradas
     # PI = 3.14159; -> Isso é um erro
     // Redeclarar uma constante também irá gerar um erro
