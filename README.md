@@ -149,6 +149,8 @@ O PHP de fato é uma das linguagens de programação mais populares da atualidad
 
 2. Hello World (Muito importante)
 
+### Semana 2 - Variáveis, constantes e operadores em PHP
+
 ##### Estudo de variáveis e constantes em PHP
 
 Declarar variáveis é alocar um espaço na memória que permite a inclusão e manipulação de dados.
@@ -207,3 +209,54 @@ Declarar variáveis é alocar um espaço na memória que permite a inclusão e m
 - Operador NOT (NÃO) => ! : inverte a lógica da operação
     - !True = False
     - !False = True
+    
+---
+
+### Semana 3 - Estrutura de controle de dados (Condicionais e repetição)
+
+- **Conteúdo**: Estrutura `if`, `else`, `elseif`, operadores ternários, `match` => substituto do `switch/case`, loops `for`, `while`, `do-while` e `foreach`
+
+#### Estruturas de controle de dados ajudam no processo de automatização em programas e sistemas
+
+##### Condicionais (IF, ELSE, ELSEIF)
+
+**Formas de uso**
+
+- uso do `if` apenas:
+Exemplo: aplicar desconto de 10% em compras acima de R$ 100;
+
+```mermaid
+
+graph LR
+
+    A[Comando] --> B{Condição} --> C[Ação]
+
+```
+```php
+if($valorCompra > 100) {
+    $valorFinal = $valorCompra * 0.9;
+}
+```
+
+- Uso do `if` e do `else`
+Exemplo: Aplicar um desconto de 10% para compras acima de 100 reais e 5% para as demais compras
+
+```mermaid 
+
+graph LR
+
+    A[Comando] --> B{Condição}
+    B --> |true| C[Ação 1]
+    B --> |false| D[Ação 2]
+
+```
+
+```php
+
+if($valorCompra > 100){
+    $valorFinal = $valorCompra * 0.9;
+} else {
+    $valorFinal = $valorCompra * 0.95;
+}
+
+```
