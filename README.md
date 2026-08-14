@@ -259,5 +259,104 @@ if($valorCompra > 100){
     $valorFinal = $valorCompra * 0.95;
 }
 
+```
 
+- Uso de `elseif` (if encadeado) → Estrutura usada para manipulação de dados em duas ou mais condicionais.
+Exemplo: Compras acima de 200 reais tem 15% de desconto, compras acima de 100 reais tem 10% de desconto e demais compras tem 5% desconto
+
+```mermaid
+
+graph LR
+
+    A[Comando] --> B{Condição 1}
+    B --> |True| C[Ação 1]
+    B --> |False| D{Condição 2}
+    D --> |True| E[Ação 2]
+    D --> |False| F[Ação 3]
+
+```
+
+Exemplo:
+
+```php
+if($valorCompra > 200) {
+    $valorFinal = $valorCompra * 0.85;
+} elseif($valorCompra > 100) {
+    $valorFinal = $valorCompra * 0.9;
+} else {
+    $valorFinal = $valorCompra * 0.95;
+}
+
+```
+
+**Obs**: Sempre usar `elseif` para situações que precisam de mais de uma condição, ou seja, fazer encadeamento das condições.
+
+- Uso **ERRADO** do if
+
+```php
+if($valorCompra > 200) {
+    $valorFinal = $valorCompra * 0.85;
+}
+if($valorCompra > 100) {
+    $valorFinal = $valorCompra * 0.9;
+} else {
+    $valorFinal = $valorCompra * 0.95;
+}
+```
+
+##### Operadores Ternários
+
+Um atalho para a estrutura condicional `if/else`, normalmente escrito em uma única linha de código.
+
+`condição ? verdadeira : falsa `
+
+Perfeito para decisões curtas de uma linha de comando
+
+Exemplo: Verificar se a pessoa é maior de idade (18);
+
+```php
+
+$idade = 20;
+//O formato é (Condição) ? Verdadeiro : Falso
+
+$status = ($idade>=18) ? "Maior de idade" : "Menor de idade";
+// Ou encadeamento (elseif):
+$status2 = ($idade>=60) ? "idoso" : ($idade>=18) ? "Adulto" : "Criança";
+
+echo $status //
+
+```
+
+##### Expressão Condicional `match` (PHP 8)
+
+No mercado atual de PHP, não se usa mais uma `Switch/Case` para chegar valores fixos, usa-se o `match`. Ele compara um valor e retorna diretamente o resultado caso atenda a condição.
+
+```mermaid 
+
+graph TD
+    A[Valor] --> B{Condicional}
+    B --> C[Ação 1]
+    B --> D[Ação 2]
+    B --> E[Ação 3]
+    B --> F[Ação 4]
+    B --> G[Ação ...]
+    B --> H[Ação default]
+    
+```
+Exemplo: Selecionar o dia da semana a partir de um Nº
+```php
+$diaSemanaNum = date("W"); //Pega o dia da semana em formato numérico
+
+$nomeDiaSemana = match($diaSemanaNum) {
+    "1" => "Domingo"
+    "2" => "Segunda"
+    "3" => "Terça"
+    "4" => "Quarta"
+    "5" => "Quinta"
+    "6" => "Sexta"
+    "7" => "Sábado"
+    "default" => "Dia Inválido"
+};
+
+echo "Hoje é ? $nomeDiaSemana";
 ```
