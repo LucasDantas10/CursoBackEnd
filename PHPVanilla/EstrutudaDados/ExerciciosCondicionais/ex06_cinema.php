@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 <?php 
 $ingressoBase = 40.00;
-$diaSemana = "Domingo";
+$diaSemana = "Quarta";
 
 
 $ingressoBase = match($diaSemana) {
@@ -22,6 +22,6 @@ if($isEstudante === true) {
 
 $valorFinal = $descontoDia;
 
-echo "O valor final do ingresso ficou em R$ $valorFinal";
+echo "O valor final do ingresso ficou em R$" . number_format($valorFinal, 2, ",", ".");
 
 ?>
