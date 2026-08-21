@@ -42,6 +42,7 @@ Sobre o mercado atual: o cenário é bom, mas mais exigente do que era. Quem con
 O Backend é formado pelo servidor, banco de dados, lógica de programação com APIs e linguagens de programação/frameworks. Esses componentes trabalham juntos para processar dados, armazenar informações e garantir o funcionamento da aplicação.
 
 ### Para que serve
+
 - Processar lógica de negócio: regras, cálculos, validações (ex: calcular frete, aplicar desconto, validar login)
 
 - Gerenciar banco de dados: salvar, buscar, atualizar e deletar informações
@@ -56,40 +57,42 @@ O Backend é formado pelo servidor, banco de dados, lógica de programação com
 
 - Escalabilidade e performance: garantir que o sistema aguente muitos usuários ao mesmo tempo.
 
-### Principais Tecnologias Linguagens de programação: 
- Ferramentas usadas para escrever o código do servidor, como Python, Node.js (JavaScript), Java e PHP.APIs: Os "caminhos" que permitem que o que você vê no celular converse com o servidor.
+### Principais Tecnologias Linguagens de programação:
+
+Ferramentas usadas para escrever o código do servidor, como Python, Node.js (JavaScript), Java e PHP.APIs: Os "caminhos" que permitem que o que você vê no celular converse com o servidor.
 
 ### Setores que mais contratam
+
 - Fintechs e Bancos:
-Segurança, transações, alta escala 
+  Segurança, transações, alta escala
 
 - E-commerce:
-Catálogo, pedidos, pagamentos
+  Catálogo, pedidos, pagamentos
 
 - Healthtechs:
-Prontuários, telemedicina
+  Prontuários, telemedicina
 
 - SaaS / Startups:
-Backend é o coração do produto
+  Backend é o coração do produto
 
 - Logística:
-Rastreio, rotas, tempo real
+  Rastreio, rotas, tempo real
 
 - Educação:
-Plataformas, conteúdo, usuários
+  Plataformas, conteúdo, usuários
 
 ### O Ciclo de Vida da Requisição HTTP
 
 ##### O que é HTTP?
 
-*HTTP*, Hypertext Transfer Protocol, é um protocolo de comunicação utilizado para transferência de informações na WWW (World Wide Web) e em outros sistemas de redes.
+_HTTP_, Hypertext Transfer Protocol, é um protocolo de comunicação utilizado para transferência de informações na WWW (World Wide Web) e em outros sistemas de redes.
 
 O HTTP é a base para que o cliente e um servidor web troquem informações. Ele permite a requisição e a resposta de recursos como, imagens, arquivos e textos.
 
 ```mermaid
 
 graph TD
-    
+
     A[Navegador]
     B[HTTP]
     C[Servidor]
@@ -131,21 +134,21 @@ O PHP de fato é uma das linguagens de programação mais populares da atualidad
 - ZIP - NTS(Non Thread Safe) 8.5
 - Descompactar o arquivo do PHP na pasta C:\src\php (Para descompactar usar o 7zip = Melhor e mais rapido) => Nunca salvar arquivo ou programas na raiz do sistema(C:)
 - Adicionar a pasta do PHP(C:\src\php) as variáveis de ambiente do sistema (PATH)
-- Verificar a instalação rodando o comando 
-> *php --version*
+- Verificar a instalação rodando o comando
+  > _php --version_
 
 #### Criando minha primeira aplicação em PHP
 
 1. Antes de começar a codar:
 
 - Preparar meu VSCODE
-    - Criar um Profile próprio para PHP.
-    - Instalar extensões necessárias para transformar o VSCODE em uma IDE.
-        - PHP Intelephense -> Permite a utilização de Snippets(Atalhos de código)
-        - PHP Debug -> Ajuda a encontrar erros de código
-        - PHP Cs fixer -> Formatação de códigos (Identação)
-        - PHP Server -> Ajuda na criação de um servidor local para PHP
-    - Desabilitamos o PHP Nativo do VSCODE (@builtin PHP)
+  - Criar um Profile próprio para PHP.
+  - Instalar extensões necessárias para transformar o VSCODE em uma IDE.
+    - PHP Intelephense -> Permite a utilização de Snippets(Atalhos de código)
+    - PHP Debug -> Ajuda a encontrar erros de código
+    - PHP Cs fixer -> Formatação de códigos (Identação)
+    - PHP Server -> Ajuda na criação de um servidor local para PHP
+  - Desabilitamos o PHP Nativo do VSCODE (@builtin PHP)
 
 2. Hello World (Muito importante)
 
@@ -155,12 +158,12 @@ O PHP de fato é uma das linguagens de programação mais populares da atualidad
 
 Declarar variáveis é alocar um espaço na memória que permite a inclusão e manipulação de dados.
 
-**Variáveis** 
+**Variáveis**
 
 - Devem ser declaradas usando "$" antes do nome da variável
-- São não tipadas (não precisa declarar o tipo dela na criação) 
+- São não tipadas (não precisa declarar o tipo dela na criação)
 - Podem ser String, Numéricas (interger e float) e Booleanas e Nulas. Não permite declaração de Undefined
-- Regra de ouro: Usar o "declare(strict_types=1);" na primeira linha do arquivo; => Blinda o sistema contra conflitos de tipos de variáveis 
+- Regra de ouro: Usar o "declare(strict_types=1);" na primeira linha do arquivo; => Blinda o sistema contra conflitos de tipos de variáveis
 
 **Constantes**
 
@@ -172,44 +175,44 @@ Declarar variáveis é alocar um espaço na memória que permite a inclusão e m
 
 **Aritméticos**: São usados para realizar cálculos
 
-|Operador | Nome | Exemplo | Resultado |
-| - | - | - | - |
-| + | Adição | 10+5 | 15 |
-| - | Subtração | 10-5 | 5 |
-| * |Multiplicação | 10*5 | 50 |
-| / | Divisão | 10/5 | 2 |
-| % | Modulo(Resto) | 10%3 | 1 (10 div 3 da 3, sobra 1) |
-| ** | Expoente | 2**3 | 8 (2 elevado a 3) |
- obs: O operador & é o melhor amigo de um programador, permite ordenar listas e organizar fila e pilhas
+| Operador | Nome          | Exemplo | Resultado                  |
+| -------- | ------------- | ------- | -------------------------- |
+| +        | Adição        | 10+5    | 15                         |
+| -        | Subtração     | 10-5    | 5                          |
+| \*       | Multiplicação | 10\*5   | 50                         |
+| /        | Divisão       | 10/5    | 2                          |
+| %        | Modulo(Resto) | 10%3    | 1 (10 div 3 da 3, sobra 1) |
+| \*\*     | Expoente      | 2\*\*3  | 8 (2 elevado a 3)          |
 
-**Relacionais**:  Permite o relacionamento entre dois ou mais valores, o resultado de uma operação é sempre uma booleana (True or False).
+obs: O operador & é o melhor amigo de um programador, permite ordenar listas e organizar fila e pilhas
 
-| Operador | Significado | Exemplo | Resultado |
-| - | - | - | - |
-| > | Maior que | 18 > 18 | False |
-| >= | Maior ou igual a | 18 >= 18 | True |
-| < | Menor que | 10 < 20 | True |
-| <= | Menor ou igual a | 10 <= 5 | False |
-| == | Comparação de valor | "10" == 10 | True |
-| === | Comparação estrita | "10" === 10 | False |
-| != | Diferente | "10" != 10 | False |
-| !== | Estritamente diferente | "10" !== 10 | True |
+**Relacionais**: Permite o relacionamento entre dois ou mais valores, o resultado de uma operação é sempre uma booleana (True or False).
 
+| Operador | Significado            | Exemplo     | Resultado |
+| -------- | ---------------------- | ----------- | --------- |
+| >        | Maior que              | 18 > 18     | False     |
+| >=       | Maior ou igual a       | 18 >= 18    | True      |
+| <        | Menor que              | 10 < 20     | True      |
+| <=       | Menor ou igual a       | 10 <= 5     | False     |
+| ==       | Comparação de valor    | "10" == 10  | True      |
+| ===      | Comparação estrita     | "10" === 10 | False     |
+| !=       | Diferente              | "10" != 10  | False     |
+| !==      | Estritamente diferente | "10" !== 10 | True      |
 
-**Lógicos**: Permite a combinação entre sentenças. 
+**Lógicos**: Permite a combinação entre sentenças.
 
 - Operador AND (E) => && : para o resultado ser verdadeiro, todas as combinações precisam ser verdadeiras
-    - True && True = True
-    - True && True = False
+  - True && True = True
+  - True && True = False
 
 - Operador OR (OU) => || : para o resultado ser verdadeiro, basta apenas uma condição ser verdadeira
-    - False || True = True
-    - False || False = False
+  - False || True = True
+  - False || False = False
 
 - Operador NOT (NÃO) => ! : inverte a lógica da operação
-    - !True = False
-    - !False = True
-    
+  - !True = False
+  - !False = True
+
 ---
 
 ### Semana 3 - Estrutura de controle de dados (Condicionais e repetição)
@@ -223,7 +226,7 @@ Declarar variáveis é alocar um espaço na memória que permite a inclusão e m
 **Formas de uso**
 
 - uso do `if` apenas:
-Exemplo: aplicar desconto de 10% em compras acima de R$ 100;
+  Exemplo: aplicar desconto de 10% em compras acima de R$ 100;
 
 ```mermaid
 
@@ -232,6 +235,7 @@ graph LR
     A[Comando] --> B{Condição} --> C[Ação]
 
 ```
+
 ```php
 if($valorCompra > 100) {
     $valorFinal = $valorCompra * 0.9;
@@ -239,9 +243,9 @@ if($valorCompra > 100) {
 ```
 
 - Uso do `if` e do `else`
-Exemplo: Aplicar um desconto de 10% para compras acima de 100 reais e 5% para as demais compras
+  Exemplo: Aplicar um desconto de 10% para compras acima de 100 reais e 5% para as demais compras
 
-```mermaid 
+```mermaid
 
 graph LR
 
@@ -262,7 +266,7 @@ if($valorCompra > 100){
 ```
 
 - Uso de `elseif` (if encadeado) → Estrutura usada para manipulação de dados em duas ou mais condicionais.
-Exemplo: Compras acima de 200 reais tem 15% de desconto, compras acima de 100 reais tem 10% de desconto e demais compras tem 5% desconto
+  Exemplo: Compras acima de 200 reais tem 15% de desconto, compras acima de 100 reais tem 10% de desconto e demais compras tem 5% desconto
 
 ```mermaid
 
@@ -331,7 +335,7 @@ echo $status //
 
 No mercado atual de PHP, não se usa mais uma `Switch/Case` para chegar valores fixos, usa-se o `match`. Ele compara um valor e retorna diretamente o resultado caso atenda a condição.
 
-```mermaid 
+```mermaid
 
 graph TD
     A[Valor] --> B{Condicional}
@@ -341,9 +345,11 @@ graph TD
     B --> F[Ação 4]
     B --> G[Ação ...]
     B --> H[Ação default]
-    
+
 ```
+
 Exemplo: Selecionar o dia da semana a partir de um Nº
+
 ```php
 $diaSemanaNum = date("W"); //Pega o dia da semana em formato numérico
 
@@ -382,6 +388,7 @@ flowchart LR
     B -- Não --> E[Fim do laço]
 
 ```
+
 Exemplo de Aplicação do While: Jogo de Advinhação de um Nº Secreto
 
 ```php
@@ -430,7 +437,7 @@ do{
     }
     echo "Tente Novamente!";
 
-} while($numeroEscolhido != $numeroSecreto); 
+} while($numeroEscolhido != $numeroSecreto);
 
 ```
 
@@ -459,14 +466,14 @@ for($andar = 1; $andar<=10; $andar++;){
 
 ##### Laço de Repetição `for`
 
-Use o `for` quando você sabe quantas vezes precisa repetir uma ação ou quando precisa controlar um contador. Ele possui três partes: 
+Use o `for` quando você sabe quantas vezes precisa repetir uma ação ou quando precisa controlar um contador. Ele possui três partes:
 
 - Inicialização,
 - Condição,
 - Incremento;
 
 for(inicialização; condição; Incremento) {
-    Ação
+Ação
 }
 
 ```mermaid
@@ -521,5 +528,204 @@ foreach ($precos as $produto => $preco){
 ```
 
 ---
+
 ---
+
 #### Desafio: Simulado de cobrança (FINANSENAI)
+
+#### Desafio Final
+
+---
+
+---
+
+### Semana 4 - Modularização com Funções
+
+#### Principio do DRY (`Don´t Repeat Yourself`)
+
+Se uma lógica foi escrita duas vezes ou mais dentro de um código, Essa Lógica deve virar uma função.
+
+#### Funções nativas do PHP
+
+O PHP tem milhares de funções prontas, essas funções são chamadas de nativas.
+
+- **O que é uma função?**
+
+Uma função é como uma máquina: você coloca uma matéria-prima(Parâmetro), ela processa e devolve um produto final(Retorno).
+
+Exemplo de Função Nativa:
+
+```php
+
+$texto = "senai americana";
+
+//str_replace(Ela busca um pedaço do texto e substitui por outro)
+$textoNovo = str_replace("americana","São Paulo",$texto);
+
+//strtoupper
+echo strtoupper($textoNovo); // SENAI SÃO PAULO
+
+```
+
+##### Principais funções nativas(Mais utilizadas)
+
+As funções abaixo já fazem parte do PHP e podem ser chamadas diretamente no código. Observe os parâmetros que cada uma recebe e o tipo de informação que ela retorna.
+
+| Função                | Categoria   | O que faz                                                      | Como usar                                      |
+| --------------------- | ----------- | -------------------------------------------------------------- | ---------------------------------------------- |
+| `strlen()`            | Strings     | Retorna a quantidade de caracteres de um texto.                | `$tamanho = strlen($texto);`                   |
+| `strtoupper()`        | Strings     | Converte o texto para letras maiúsculas.                       | `$resultado = strtoupper($texto);`             |
+| `strtolower()`        | Strings     | Converte o texto para letras minúsculas.                       | `$resultado = strtolower($texto);`             |
+| `ucfirst()`           | Strings     | Converte a primeira letra do texto para maiúscula.             | `$resultado = ucfirst($texto);`                |
+| `trim()`              | Strings     | Remove espaços e quebras de linha no início e no fim do texto. | `$limpo = trim($texto);`                       |
+| `str_replace()`       | Strings     | Substitui uma parte do texto por outra.                        | `$novo = str_replace("-", "", $cpf);`          |
+| `substr()`            | Strings     | Extrai uma parte do texto a partir de uma posição.             | `$inicio = substr($texto, 0, 3);`              |
+| `explode()`           | Strings     | Divide um texto e cria um array usando um separador.           | `$palavras = explode(" ", $nome);`             |
+| `implode()`           | Arrays      | Junta os itens de um array em um único texto.                  | `$lista = implode(", ", $nomes);`              |
+| `count()`             | Arrays      | Conta a quantidade de itens de um array.                       | `$total = count($produtos);`                   |
+| `in_array()`          | Arrays      | Verifica se um valor existe dentro de um array.                | `$existe = in_array("SP", $estados, true);`    |
+| `array_push()`        | Arrays      | Adiciona um ou mais itens ao final de um array.                | `array_push($nomes, "Ana");`                   |
+| `array_pop()`         | Arrays      | Remove e retorna o último item de um array.                    | `$ultimo = array_pop($nomes);`                 |
+| `sort()`              | Arrays      | Ordena um array em ordem crescente e reorganiza suas chaves.   | `sort($notas);`                                |
+| `array_keys()`        | Arrays      | Retorna um array contendo as chaves de outro array.            | `$chaves = array_keys($produtos);`             |
+| `number_format()`     | Números     | Formata um número com casas decimais e separadores definidos.  | `$preco = number_format($valor, 2, ',', '.');` |
+| `round()`             | Números     | Arredonda um número para a quantidade de casas informada.      | `$media = round($nota, 2);`                    |
+| `max()`               | Números     | Retorna o maior valor de uma lista ou array.                   | `$maior = max($notas);`                        |
+| `min()`               | Números     | Retorna o menor valor de uma lista ou array.                   | `$menor = min($notas);`                        |
+| `is_numeric()`        | Validação   | Verifica se o valor é um número ou uma string numérica.        | `if (is_numeric($entrada)) { ... }`            |
+| `isset()`             | Validação   | Verifica se uma variável existe e não possui valor `null`.     | `if (isset($usuario)) { ... }`                 |
+| `empty()`             | Validação   | Verifica se uma variável está vazia.                           | `if (empty($pedido)) { ... }`                  |
+| `date()`              | Data e hora | Formata uma data ou hora conforme uma máscara.                 | `$hoje = date('d/m/Y');`                       |
+| `file_exists()`       | Arquivos    | Verifica se um arquivo ou diretório existe.                    | `if (file_exists('dados.txt')) { ... }`        |
+| `file_get_contents()` | Arquivos    | Lê todo o conteúdo de um arquivo ou endereço.                  | `$conteudo = file_get_contents('dados.txt');`  |
+| `file_put_contents()` | Arquivos    | Grava conteúdo em um arquivo, criando-o se necessário.         | `file_put_contents('log.txt', $mensagem);`     |
+
+**Atenção:** algumas funções modificam o array original, como `sort()`, `array_push()` e `array_pop()`. Já outras retornam um novo valor, como `count()`, `explode()` e `str_replace()`. Em caso de dúvida, consulte a documentação oficial do PHP e verifique o retorno da função.
+
+##### Documentação PHP
+
+[Acesse a documentação oficial do PHP em português](https://www.php.net/manual/pt_BR)
+
+Consulte também a [referência de funções do PHP](https://www.php.net/manual/pt_BR/funcref.php) para pesquisar a sintaxe, os parâmetros e os valores por cada função
+
+#### Funções customizadas (Criando suas próprias máquinas)
+
+Quando o PHP não tem a função que queremos, nós a criamos!
+
+**A regra de Ouro:** Uma função deve focar em `return`(Retornar um valor), e não imprimir(`echo`).
+
+Veja a diferença nesse exemplo:
+
+```php
+
+function calcularTotal($preco, $quantidade){
+    //a função calcula e retorna o resultado, mas não imprime nada
+    return $preco * $quantidade;
+}
+
+$total = calcularTotal(25.00, 3);
+
+echo "Total da compra: R$ " . number_format($total, 2, ",", ".");
+//Total da compra: R$ 75,00
+
+```
+
+A função `calcularTotal()` pode ser reutilizada em uma página, relatório ou teste. O `echo` aparece somente fora da função, no momento de apresentar o resultado ao usuário.
+
+##### Padrão de uso corporativo(PHP 8 Strict Types)
+
+No mercado de trabalho, exigimos que a função avise exatamente o **TIPO** de dado que ela espera receber e o **TIPO** que ela vai devolver.
+
+Isso é chamado de **tipagem de funções**. Ao declarar os tipos, o código fica mais fácil de entender e o PHP consegue identificar alguns erros antes que eles causem problemas maiores no sistema.
+
+Os tipos mais usados:
+
+- `int`: Números inteiros, Ex: `10` ou `1024`.
+- `float`: Números decimais ou Ponto flutuante, Ex: `10.50`.
+- `string`: Texto, Ex: `"Maria"`
+- `bool`: Valor lógico, `true` ou `false`.
+- `void`: Identifica que a função não devolve nenhum valor.
+
+O tipo deve ser escrito antes do nome de cada parâmetro e o tipo da função deve ser escrito após os parênteses, precedido por `:`, informando o que a função vai devolver.
+
+Exemplo de uso de função e parâmetros típados:
+
+```php
+function apresentarProduto(string $nome, float $preco): string{
+    return "$nome custa R$ $preco";
+}
+
+$mensagem = apresentaProduto("Caderno", 25.90);
+echo $mensagem;
+// Caderno custa R$ 25.90
+
+```
+
+> **Resumo**: os tipos dos parâmetros documentam as entradas da função, o tipo após `:` documentam a saída da função
+
+##### O Tipo mágico: `void`
+
+Se uma função faz um trabalho interno e **não retorna NADA**, dizemos que o retorno dela é "vazio" (`void`).
+
+Exemplo de função sem retorno:
+
+```php
+function registroLog(string $mensagem): void{
+    //apenas salvar em um arquivo de texto, não devolve nenhuma variável
+    file_put_contents("erro.log", $mensagem);
+}
+```
+
+#### Escopo e Referência (O segredo da memória)
+
+##### O que é Escopo? (A regra de Las Vegas)
+
+_O que acontece dentro da função, fica dentro da função_. Uma variável criada fora não existe lá dentro, e uma criada lá dentro morre quando a função acaba.
+
+**Escopo** É o local do programa onde a variável pode ser armazenada/acessada. Em PHP, uma variável criada fora de uma função pertence ao **escopo global**. Uma variável criada dentro de uma função pertence ao **escopo local**.
+
+Exemplo de Escopo de variável:
+
+```php
+$nomeSistema = "CRM Senai"; //Variável global
+
+function criarMensagem():string{
+    $mensagem = "Bem-Vindo!"; //Variável local
+    return $mensagem;
+}
+
+echo $nomeSistema; //Correto: está no escopo global.
+echo criarMensagem(); //Correto: a função devolve sua variável local.
+echo $mensagem; //Incorreto: $mensagem só existe dentro da função, não é acessada fora.
+```
+
+- Como enviar dados para uma função?
+
+A forma mais segura e organizada é enviar os dados por **parâmetros**. Assim, a função não precisa acessar diretamente variáveis globais:
+
+```php
+function saudar(string $nome):string{
+    return "Olá, $nome!";
+}
+
+$nomeCliente = "João";
+echo saudar($nomeCliente); //Olá, João!
+```
+
+Nesse caso, `$nomeCliente` continua no escopo global, mas seu valor é enviado para o parâmetro local `$nome`. A função recebe uma informação, processa e retorna o resultado.
+
+Exemplo Incorreto:
+
+```php
+
+$nome = "João";
+function saudar():string{
+    return "Olá, $nome";
+}
+```
+
+A função `saudar()` não conhece a variável global `$nome`
+
+> **Resumo:** variáveis protegem os dados internos da função; parâmetros são o caminho recomendado para evitar erros e enviar informações, e o `return` é usado para devolver um resultado ao código que chamou a função.
+
+    
