@@ -109,3 +109,34 @@ echo exibirCliente();
 ---
 
 ### 7- Referência: O que muda quando um parâmetro é declarado como float &$valor? Explique a diferença entre alterar uma cópia e alterar a variável original.
+
+> Resposta: Em PHP, quando usamos `float $valor`, a função recebe uma cópia do valor, então alterações feitas dentro dela não mudam a variável original. Já com `float &$valor`, a função recebe uma referência à variável original, permitindo alterar seu valor diretamente.
+
+---
+
+### 8- Funções nativas: Escolha cinco funções da tabela deste material e descreva: categoria, finalidade, parâmetros principais e valor retornado.
+
+> Resposta: Cinco funções nativas do PHP são `strlen()`, `strtoupper()`, `count()`, `sort()` e `is_numeric()`. A função `strlen()` pertence à categoria Strings e retorna a quantidade de caracteres de um texto. `strtoupper()` também é da categoria Strings e converte um texto para letras maiúsculas. A função `count()` pertence à categoria Arrays e conta a quantidade de itens de um array. `sort()` também trabalha com Arrays e organiza os elementos em ordem crescente. `Já is_numeric()` pertence à categoria Validação e verifica se um valor é um número ou uma string numérica, retornando true ou false.
+
+---
+
+### 9- **Previsão de saída:** Qual será o resultado exibido pelo código abaixo? Explique o motivo.
+
+
+
+> Resposta: A saída será: 90100
+
+> Isso acontece porque a função recebe $valor por cópia, já que não existe & no parâmetro. A função calcula 90% de 100, resultando em 90, mas a variável $valor continua valendo 100.
+
+---
+
+### 10- Documentação: Pesquise na documentação oficial do PHP a função strlen() e anote sua sintaxe, o parâmetro recebido e o tipo de retorno.
+
+> Resposta: A função `strlen()` é usada para saber o tamanho de uma string. Sua sintaxe é strlen(string $string): int. Ela recebe uma string como parâmetro e retorna um número inteiro (int) indicando a quantidade de bytes do texto.
+
+---
+
+
+
+
+
