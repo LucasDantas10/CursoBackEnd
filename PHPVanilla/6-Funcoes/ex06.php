@@ -1,0 +1,15 @@
+<?php
+declare(strict_types=1);
+
+function aplicarDesconto(float &$preco, float $porcentagem): void
+{
+    $preco -= $preco * ($porcentagem / 100);
+}
+
+$preco = 200.00;
+
+echo "Preço antes: R$ " . number_format($preco, 2, ',', '.') . "\n";
+
+aplicarDesconto($preco, 15);
+
+echo "Preço depois: R$ " . number_format($preco, 2, ',', '.');
