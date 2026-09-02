@@ -1,12 +1,13 @@
-div{
+div {
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid #5381d6;
-    padding: 20px; 
-    width: 300px; 
+    padding: 20px;
+    width: 300px;
     border-radius: 10px;
 }
+
 .container {
     width: 80%;
     margin: 50px auto;
@@ -75,4 +76,61 @@ tfoot td {
 .tabela td {
     padding: 10px;
     border: 1px solid #ddd;
+}
+
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    border: none;
+    padding: 0;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #5381d6;
+    border-radius: 12px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    text-align: left;
+    &:hover{
+        transform: translateY(-5px);
+    }
+}
+
+.categoria {
+    color: #777;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.nome {
+    color: #0d045e;
+    margin: 12px 0;
+}
+
+.card .valor {
+    color: #0b0164;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.desconto {
+    display: inline-block;
+    background-color: #0b0164;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.subtitulo1{
+    display: flex;
+    justify-content: center;
 }
