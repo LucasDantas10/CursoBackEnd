@@ -1,0 +1,78 @@
+div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #5381d6;
+    padding: 20px; 
+    width: 300px; 
+    border-radius: 10px;
+}
+.container {
+    width: 80%;
+    margin: 50px auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+tfoot {
+    background-color: #ddd;
+}
+
+tfoot td {
+    font-size: 16px;
+}
+
+.titulo {
+    color: #0d045e;
+}
+
+.subtitulo {
+    color: #131c70;
+}
+
+.valor {
+    font-size: 18px;
+}
+
+.saldo {
+    font-size: 18px;
+    color: green;
+}
+
+.tabela {
+    background-color: white;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tabela th {
+    background-color: #000449;
+    color: white;
+    padding: 10px;
+}
+
+.tabela td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
