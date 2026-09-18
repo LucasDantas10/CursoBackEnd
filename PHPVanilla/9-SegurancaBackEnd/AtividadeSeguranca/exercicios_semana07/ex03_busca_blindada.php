@@ -8,7 +8,7 @@ function e(string $texto): string
 }
 
 // Captura o termo pesquisado
-$busca = $_GET['q'] ?? '';
+$busca = $_GET["q"] ?? "";
 
 ?>
 

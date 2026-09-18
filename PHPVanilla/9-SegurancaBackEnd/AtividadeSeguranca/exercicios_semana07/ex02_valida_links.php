@@ -7,9 +7,9 @@ function e(string $texto): string
     return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');
 }
 
-$nome = '';
-$linkValido = '';
-$erro = '';
+$nome = "";
+$linkValido = "";
+$erro = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
