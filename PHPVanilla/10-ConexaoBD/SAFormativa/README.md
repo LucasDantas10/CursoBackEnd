@@ -1,6 +1,6 @@
 # Projeto de Conexão com Banco de Dados usando PDO, Singleton e PDOException
 
-## Passo 1: Validando a extensão pdo_pgsql e o servidor do PostgreSQL
+## Passo 1: Validando a extensão pdo_pgsql e o Servido do PostgreSQL
 
 1. Abra o terminal e execute o seguinte comando:
 
@@ -8,18 +8,19 @@
 php -m | findstr -i pgsql
 ```
 
-Saída esperada: Deve listar `pdo_pgsql` e o `pgsql`
+Saída Esperada: Deve listar `pdo_pgsql` e o `pgsql`
 
-Caso não apareça:
+Caso não aparecça:
 * Abrir seu `php.ini`
-* Localize a linha `;extention=pdo_pgsql` e remova o ponto e vírgula inicial (`;`).
-* Salve o arquivo e valide novamente o comando
+* Localize a linha `;extention=pdo_pgsql`e remova o ponto e vírgula inicial (`;`).
+* Salve o Arquivo e valide novamente o comando
 
-2. Validar o serviço do PostgreSQL
+2. Validar o Serviço do PostgreSQL
 
-Instalar uma extensão do VSCode -> PostgreSQL (Chris Kolkman) e configurar uma conexão
+Instalar uma extensão do VSCode -> PostgreSQL (Chris Kolkman)
+E configurar uma Conexão
 
-## Passo 2: Estrutura de diretórios do projeto
+## Passo 2: Estrutura de Diretórios do Projeto
 
 Organize a raiz do projeto exatamente com a seguinte árvore de pastas:
 
@@ -40,7 +41,7 @@ SAFormativa/
 
 ```sql
 -- Cria o banco de dados da biblioteca (caso use o terminal psql)
-CREATE DATABASE  WITH ENCODING 'UTF8';
+CREATE DATABASE biblioteca_escola WITH ENCODING 'UTF8';
 
 -- Cria a tabela de acervo de livros
 CREATE TABLE IF NOT EXISTS livros (
@@ -61,6 +62,18 @@ VALUES
 ('1984', 'George Orwell', 45.00, 'RESERVADO');
 ```
 
-## Passo 4: Criando o arquivo de configuração (`config/database.ini`)
+## Passo 4: Criando o Arquivo de Configuração (`config/database.ini`)
 
-Crie o arquivo. Ajuste as chaves de acesso ao banco de dados
+Crie o arquivo. Ajuste as chaves de acesso ao banco de dado
+
+Colocar o Arquivo de Configuração dentro do `.gitignore`
+
+
+## Passo 5: Contruindo a Classe Singleton e Conexão com o Banco de Dados (`src/ConexaoBanco.php`)
+
+criação de uma classe segura de conexão usando Singleton PDO e suas Flags de Segurança, e Envelopamento (.ini) de Dados.
+
+## Passo 6: Construindo a Interfacce de Diagnóstico do Banco de Dados (`index.php`)
+
+
+

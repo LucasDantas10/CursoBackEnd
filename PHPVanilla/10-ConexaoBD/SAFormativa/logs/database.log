@@ -1,0 +1,3 @@
+[2026-09-25 13:25:43] ERRO INFRA: Erro no banco de dados: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+[2026-09-25 13:25:43] ERRO INFRA: Erro no banco de dados: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied
+[2026-09-25 13:26:04] ERRO INFRA: Erro no banco de dados: SQLSTATE[08006] [7] connection to server at "127.0.0.1", port 5432 failed: FATAL:  banco de dados "biblioteca_escol" não existe
