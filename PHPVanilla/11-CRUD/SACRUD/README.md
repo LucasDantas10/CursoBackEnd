@@ -14,7 +14,7 @@ SACRUD/
 |__ index.php                <- Controlador e interface visual
 |__ schema.sql               <- Script do banco de Dados
 |__ .gitignore               <- arquivos fora do versionamento
-|__ README.md                <- Documentação do PRojeto
+|__ README.md                <- Documentação do Projeto
 
 ```
 
