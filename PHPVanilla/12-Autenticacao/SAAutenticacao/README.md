@@ -98,3 +98,17 @@ final class ConexaoBanco {
     }
 }
 ```
+
+## Camada de Acesso a Dados ( `src/UsuarioDAO.php`)
+
+Isolar as operações de busca e cadastro de usuários, aplicando o hashing de senha com `password_hash()`
+
+Criar os métodos:
+- Cadastrar (create)
+- Buscar por email (read)
+- Verificar se email já existe (read)
+
+## Fazer o serviço de autenticação (`src/AuthService.php`)
+
+
+

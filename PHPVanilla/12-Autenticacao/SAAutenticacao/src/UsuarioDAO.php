@@ -41,4 +41,21 @@ final class UsuarioDAO{
         return $resultado ?: null;
     }
 
+    //buscar um email cadastrado -> verificar se o email já esta cadastrado
+    public function emailExiste(string $email): bool{
+        // Busca apenas a coluna do email a partir do email digitado
+        $sql = "SELECT 1 FROM usuarios WHERE email = :email";
+        $stmt = $this->pdo->prepare($sql);
+        // Ajusta o email digitado para minúsculo e recorta os espaços em branco
+        $stmt->bindValue(":email",strtolower(trim($email)), PDO::PARAM_STR);
+        // Executa a busca
+        $stmt->execute();
+        // Se email for encontrado retorna true, se não, retorna false
+        return (bool)$stmt->fetchColumn(); // (bool) => CAST para garantir que o retorno vai ser uma booleana
+    }
+
+    // está faltando um update
+
+    // e está faltando um delete
+
 }
