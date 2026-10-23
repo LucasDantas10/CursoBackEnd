@@ -18,6 +18,7 @@ SAPOO/
 │       └── ValorInvalidoException.php      <- Valores negativos ou nulos
 ├── app_banco.php                           <- Simulador visual de operações bancárias
 └── README.md                               <- Documentação e testes
+```
 
 
 ## Criação da Exception de Dominio
@@ -25,3 +26,7 @@ SAPOO/
 ### Conta Exception (`src/Exceptions/ContaException.php`)
 
 ## Entidade de Titularidade (`src/Dominio/Titular.php`)
+
+## SuperClasse Chamada ContaBancaria -> Abstrata
+
+
