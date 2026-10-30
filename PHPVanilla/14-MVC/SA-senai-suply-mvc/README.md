@@ -171,3 +171,12 @@ Criar a Classe Singleton de Conexão com o Banco de Dados (`src/Core/ConexaoBanc
 - ConexaoBanco.php => classe do tipo Singleton para conexão com o banco de dados
 
 ### Criação da classe de logs do Sistema
+
+- Criação de Classe para receber os logs do Sistema (auditoria, aviso, erro)
+
+### Criação dos Models
+
+
+### Criação dos Constrollers
+
+- Criar Classe abstrata Constroller => vai servir de base para todos os controllers do sistema
