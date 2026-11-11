@@ -7,6 +7,7 @@ use App\Core\AuthGuard;
 use App\Core\Controller;
 use App\Models\Movimentacao;
 use App\Models\Produto;
+use DomainException;
 
 final class MovimentacaoController extends Controller {
 

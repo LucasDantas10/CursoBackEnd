@@ -4,8 +4,10 @@ declare(strict_types=1);
 use App\Controllers\AuthController;
 use App\Controllers\HomeController;
 use App\Controllers\ProdutoController;
+use App\Controllers\MovimentacaoController;
 use App\Core\AuthGuard;
 use App\Core\Roteador;
+use MovimentacaoController as GlobalMovimentacaoController;
 
 //front Controller da Aplicação 
 
@@ -40,5 +42,5 @@ $roteador->registrar('POST', '/produtos/salvar', [ProdutoController::class, 'sal
 $roteador->registrar('GET', '/movimentacoes/novo', [MovimentacaoController::class, 'formulario'], $guardOperacional);
 $roteador->registrar('POST', '/movimentacoes/salvar', [MovimentacaoController::class, 'salvar'], $guardOperacional);
 
-//Despachar a rota
+//Despahcar a Rota
 $roteador->despachar($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
