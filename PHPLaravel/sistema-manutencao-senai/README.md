@@ -28,3 +28,7 @@ php artisan make:model NomeDoModelo -m
 Equipamento (tag, nome, setor, criticidade, status)
 
 OrdemServico (codigo, titulo, (int)equipamentoId, tipo, prioridade, status, tecnico, dataAbertura, prazoLimite)
+
+Criar os Controllers via Artisan
+
+`php artisan make:controller NomeController --resource`
