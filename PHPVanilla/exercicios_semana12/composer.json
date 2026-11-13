@@ -1,0 +1,13 @@
+{
+    "name": "aluno/semana12-mvc",
+    "description": "Atividade da Semana 12 - MVC artesanal com PHP Vanilla",
+    "type": "project",
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}

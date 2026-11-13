@@ -2611,3 +2611,250 @@ O ataque CSRF ocorre quando um site malicioso força o navegador de um usuário 
     <!-- O Blade gera: <input type="hidden" name="_token" value="xY8z..."> -->
 </form>
 ```
+
+**Simulação do método em Formulários (Method Spoofing)**
+A especificação do HTML5 possui um limitação histórica conhecida: *formulários HTML suportam nativamente apenas o método `GET` e `POST` no atributo `method=`.
+
+Como enviar requisições `PUT`para atualzia ou `DELETE`´para excluir dados através de formulários web padrão?
+
+O Laravel resolve isso através de técnica de **Method Spoofing**: que define como `method="POST"` e injeta o campo oculto `_metrhod`através da diretiva Blade `@method("verbo")`:
+
+**Exemplos Práticos**:
+
+- Formulário de Atualização (PUT):
+```blade
+<form action="{{ route('clientes.update', $cliente['id']) }}" method="POST">
+    @csrf
+    @method('PUT')
+    <!-- O Blade gera: <input type="hidden" name="_method" value="PUT"> -->
+    <button type="submit">Salvar Alterações</button>
+</form>
+```
+
+- Botão de Exclusão Destrutiva (DELETE):
+```blade
+<form action="{{ route('clientes.destroy', $cliente['id']) }}" method="POST" onsubmit="return confirm('Confirmar exclusão?');">
+    @csrf
+    @method('DELETE')
+    <button type="submit" style="color:red;">Excluir Parceiro</button>
+</form>
+```
+
+---
+
+### Semana 15 - Motor de Templates (Blade), Herança de Layout e Componentes no LARAVEL
+
+**Tema:** Template Blade, Ciclor de Compilação e Chache de Views, Interpolação de Dados, Diretivas Condicionias, Laços de Repetição, 
+Iteração, Layouts Mestres (Herança)
+
+
+#### **1. A Camada de Visualização (Blade)**
+
+Nas semanas anteriores, construimos as bases do Laravel:
+- Semana 13: infraestrutura do Laravel, Ambiente enxuto, .env e os comandos do Artisan CLI
+- Semana 14: roteamento RESTful, Verbos HTTP (GET, POST, PUT, DELETE), parâmetros e *Resource Controllers*
+
+Nesta semana iremos estudar a interface visual da aplicação e a diferença entre o PHP Vanila e o PHP Laravel
+
+**Exemplo de uso do da Camada de Visualização no PHP Vanila:**
+
+```php
+<!-- ARQUIVO LEGADO: lista_ordens.php (O PESADELO DA MANUTENÇÃO) -->
+<!DOCTYPE html>
+<html>
+<head><title>Sistema de Manutenção</title></head>
+<body>
+    <header><h1>SENAI Manutenção</h1><nav>Menu...</nav></header>
+    <?php
+    // Mistura de lógica de banco e HTML solto
+    $ordens = $pdo->query("SELECT * FROM ordens")->fetchAll();
+    foreach ($ordens as $o) {
+        // Vulnerabilidade Crítica de XSS: Sem sanitização na saída
+        echo "<div>" . $o['titulo'] . " - " . $o['responsavel'] . "</div>";
+    }
+    ?>
+    <footer>SENAI 2026</footer>
+</body>
+</html>
+```
+
+Os Problemas da Abordagem PHP Vanilla:
+1. **Duplicidade de Códigos**: Se aplaicação possuir 30 telas, as tags `<DOCTYPE html>` `<head>` e outras  como menus, rodapés deverão ser copiads e coladas 30 vezes. Se o logotipo da empresa mudar, por exemplo, o desenvolvedor terá que editar 30 vezes os arquivos manualmente
+2. **Vulnerabilidade a Ataques XSS**: Ao utilizarmos `echo $variavel` sem `htmlspecialchars()`, qualquer script malicioso pode ser gravado no banco de dados(ex: `<script>RoubarCookies()</script>`)será executado silenciosamente no navegador do usuário.
+3. Acoplamento Extremo**: A lógica de decisão de apresentação fica misturada com HTML bruto, inviabilizando teste e colaboração entre equipes de BACK-End e Front-End.
+
+**A Diferenca entre a Abordagem Caótica e o Blade**
+
+```mermaid
+flowchart TD
+    subgraph Caotico ["Abordagem Legada (Insegura e Repetitiva)"]
+        arq1["ordem_criar.php<br/>• Repete cabeçalho e menu<br/>• echo sem escape<br/>• Sem componentes"]
+        arq2["ordem_listar.php<br/>• Repete cabeçalho e menu<br/>• if/else procedural<br/>• HTML duplicado"]
+        arq3["equipamento_listar.php<br/>• Repete cabeçalho e menu<br/>• Risco de XSS<br/>• Zero modularidade"]
+    end
+
+    subgraph Blade ["Arquitetura Blade no Laravel 11 (Modular e Segura)"]
+        layout["Layout Mestre Compartilhado<br/>(resources/views/layouts/app.blade.php)"]
+        comp["Componentes Reutilizáveis<br/>(<x-card-kpi>, <x-badge-status>, <x-alert>)"]
+        views["Views Filhas Leves<br/>(Apenas o conteúdo específico com @extends)"]
+
+        layout --> views
+        comp --> views
+    end
+
+    style Caotico fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d
+    style Blade fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+```
+
+
+#### **2. A Compilação do Blade**
+
+O **Blade** é o motor de templates nativo e exclusivo do framework Laravel. Oferecendo uma sintaxe expressiva, limpa e extremamente produtiva para construção de interfaces visuais.
+
+**Como o Blade Funciona por Baixo do Código Limpo**
+1. Todas as views Blade possuem a extensão composta `.blade.php`
+2. Quando o Controller executa  `returna view("pagina.index")`, o Laravel lê o arquivo `resource/views/pagina/index.blade.php`
+3. O Blade compila as diretivas (`@if`, `@forelse`, `{{}}`), convertendo em **código PHP puro e otimizado** sem a necessidade de usar Tag `<?php >`
+4. O resultado compilado é gravado em cache no disco em `storage/framework/views/`.
+5. Nas requisições seguintes, o Laravel veirifica se o arquivo original foi modificado: se não foi, ele executa o cache compilado diretamente, entregando **performance máxima e zero sobrecargaa de processamento**. (PréProcessamento de Visualização)
+
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Cliente as Navegador Web
+    participant Router as Roteador (routes/web.php)
+    participant Ctrl as OrdemServicoController
+    participant Engine as Blade Compiler
+    participant Cache as storage/framework/views
+    participant Model as Model (OrdemServico)
+
+    Cliente->>Router: GET /ordens
+    Router->>Ctrl: index()
+    Ctrl->>Model: buscarTodas()
+    Model-->>Ctrl: Coleção de Ordens
+    Ctrl->>Engine: view('ordens.index', dados)
+    alt Cache não existe ou arquivo foi alterado
+        Engine->>Engine: Compila diretivas Blade para PHP puro
+        Engine->>Cache: Salva arquivo compilado (.php)
+    end
+    Cache-->>Cliente: Retorna HTML estruturado, sanitizado e rápido
+```
+
+>[!OBS]
+> **Comando Artisan Essencial para o Blade:**
+> - `php artisan view:clear` -> Limpa todo o cache de views compilados (essencial durante depuraçao de layouts).
+> - `php artisan view:cache` -> Pré-compila todas as views da aplicação de uma só vez (recomendado ao realizar deploy em produção)
+
+#### **3. Sintaxa de Interpolação e Defesa contra XSS**
+
+**Interpolçao Segura com Escape Automático (`{{}}`):**
+
+A sintaxe `{{ $variavel }}` é a forma padrão de exibição de dados no Blade:
+
+O Blade envolve internamente a variável com a função nativa `htmlspecialchars($variavel, EN_QUOTES, "UTF-8", true)`.
+
+```blade
+<!-- Exemplo de Entrada Maliciosa digitada por um usuário em um formulário: -->
+@php
+    $descricaoSensor = "<script>alert('Vulnerabilidade XSS!');</script>";
+@endphp
+
+<!-- Como você escreve no Blade: -->
+<p>{{ $descricaoSensor }}</p>
+
+<!-- O que o Blade gera no HTML compilado: -->
+<!-- &lt;script&gt;alert('Vulnerabilidade XSS!');&lt;/script&gt; -->
+```
+
+#### **4. Diretivas de Fluxo, Condicionais e Laços Otimizados**
+
+O Blade substitui a sintaxe verbosa do PHP tradicional (`<?php if(...): ?>`) por diretivas iniciada em `@`.
+
+**Condicionais: `@if`, `@unless`, `@isset`, `@empty` e `@switch`
+
+``blade
+{{-- 1. Condicional clássica --}}
+@if($ordem->status === 'CRITICA')
+    <span class="alerta-vermelho">Risco de Parada de Linha!</span>
+@elseif($ordem->status === 'ALERTA')
+    <span class="alerta-amarelo">Atenção Técnica</span>
+@else
+    <span class="alerta-verde">Operação Estável</span>
+@endif
+
+{{-- 2. @unless: Executa somente se a condição for FALSA (o inverso do if) --}}
+@unless($ordem->isConcluida())
+    <button>Finalizar Ordem de Serviço</button>
+@endunless
+
+{{-- 3. @isset e @empty --}}
+@isset($ordem->tecnico_responsavel)
+    <p>Responsável Técnico: {{ $ordem->tecnico_responsavel }}</p>
+@endisset
+```
+
+**O Laço de Repetição: `@forelse ... @empty ... @endforelse`**
+
+Em Aplicações profissionais, é um erro exibir uma tabela vazia sm aviso ao usuário. Em vez de escrever um `@if(count($lista) > 0)` seguido de @foreach`, o Blade entrega o `@forelse`:
+
+```blade
+@forelse($ordens as $ordem)
+    <div class="linha-ordem">
+        <strong>#{{ $loop->iteration }}</strong> - {{ $ordem->titulo }}
+    </div>
+@empty
+    <div class="alerta-vazio">
+        Nenhuma ordem de serviço pendente para esta máquina.
+    </div>
+@endforelse
+```
+
+**Outros Elementos de Iteração(repetição)**
+
+Dentro de qualquer laço `@foreach` ou `@forelse`, o Blade disponibiliza automaticamente o objeto `$loop`, repleto de propriedades úteis:
+
+| Propriedade de `$loop` | Tipo de Retorno | Finalidade Prática no Back-End |
+| :--- | :---: | :--- |
+| `$loop->index` | `int` | Índice numérico baseado em 0 (0, 1, 2...). |
+| `$loop->iteration` | `int` | Contagem ordinal legível baseada em 1 (1, 2, 3...). |
+| `$loop->first` | `bool` | Retorna `true` se for a primeira iteração do laço. |
+| `$loop->last` | `bool` | Retorna `true` se for a última iteração do laço. |
+| `$loop->even` | `bool` | Retorna `true` em iterações pares (ideal para efeito zebra em tabelas). |
+| `$loop->odd` | `bool` | Retorna `true` em iterações ímpares. |
+| `$loop->count` | `int` | Quantidade total de itens sendo iterados na coleção. |
+
+#### **5. Herança de Layout e Componenetes Modernos**
+
+Elemento usado para criar `section`  que serão repetidas em diversa págians como cabeçalho ou rodapés, por exemplo. 
+
+```mermaid
+flowchart TD
+    mestre["Layout Mestre: layouts/app.blade.php<br/>• Estrutura HTML5 global<br/>• Barra de navegação e rodapé<br/>• @yield('titulo') e @yield('conteudo')<br/>• @stack('scripts')"]
+
+    v1["View Filha: ordens/index.blade.php<br/>• @extends('layouts.app')<br/>• @section('conteudo')<br/>• Consome <x-card-kpi>"]
+    v2["View Filha: equipamentos/index.blade.php<br/>• @extends('layouts.app')<br/>• @section('conteudo')<br/>• Consome <x-badge-status>"]
+
+    mestre --> v1
+    mestre --> v2
+
+    style mestre fill:#fed7aa,stroke:#ea580c,stroke-width:2px,color:#7c2d12
+    style v1 fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+    style v2 fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e40af
+```
+
+**Herança Clássica com `@extends`, `@section` e `@yield`:**
+
+- **`@yield('nome_secao')`**: Define um ponto de inserção no layout mestre.
+- **`@extends('layouts.app')`**: Informa que a view filha herda toda a estrutura do layout mestre.
+- **`@section('nome_secao') ... @endsection`**: Injeta o bloco de conteúdo correspondente no `@yield`.
+
+**Componenetes Blade Modernos**
+
+Arquiteturas de software modernas priorizam componentes isolados com escopo próprio.  
+Qualquer arquivo criado em `resources/views/components/nome-componente.blade.php` pode ser consumido como uma tag HTML personalizada: `<x-nome-componente />`.
+
+- **Passagem de Propriedades:** `@props(['titulo', 'valor', 'cor' => '#38bdf8'])`.
+- **Slots Padrão:** O corpo interno da tag (`{{ $slot }}`).
+- **Slots Nomeados:** Blocos estruturados com `<x-slot:cabecalho>...</x-slot:cabecalho>`.
+
