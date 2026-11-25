@@ -14,13 +14,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('equipamentos', function (Blueprint $table) {
-            $table->id();
-            $table->tag()->unique();
-            $table->nome();
-            $table->setor();
-            $table->criticidade();
-            $table->status();
-            $table->timestamps();
+            $table->id();//primary key
+            $table->string("tag")->unique();
+            $table->string("nome");
+            $table->string("setor");
+            $table->string("criticidade");
+            $table->string("status");
+            $table->timestamps();//carimbo de data e hora da criação da entidade no banco de dados
         });
     }
 

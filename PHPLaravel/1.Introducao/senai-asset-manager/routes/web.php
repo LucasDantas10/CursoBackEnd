@@ -28,3 +28,17 @@ Route::get('/produtos/estoque/{tipo}', [
     ProdutoController::class,
     'estoque'
 ])->name('produtos.estoque');
+
+Route::get('/setores', [AtivoController::class, 'setores'])
+    ->name('ativos.setores');
+
+Route::get('/ativos/{codigo}', [AtivoController::class, 'detalhar'])
+    ->name('ativos.detalhar');
+
+Route::get('/healthz', function () {
+    return response()->json([
+        "status" => "UP",
+        "uptime_segundos" => round(microtime(true) - LARAVEL_START, 2),
+        "memoria_mb" => round(memory_get_usage(true) / 1024 / 1024, 2)
+    ], 200);
+})->name('healthz');
