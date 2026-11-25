@@ -4,6 +4,7 @@ use App\Http\Controllers\AtivoController;
 use App\Http\Controllers\ClienteController;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FornecedorController;
 
 //Rota Principal da Minha aplicação : Dashboard de Ativos Fabris
 Route::get("/", [AtivoController::class, "index"])->name("ativos.index");
@@ -42,3 +43,39 @@ Route::get('/healthz', function () {
         "memoria_mb" => round(memory_get_usage(true) / 1024 / 1024, 2)
     ], 200);
 })->name('healthz');
+
+
+Route::get('/clientes/{cliente}/contratos/{ano}',
+    [AtivoController::class, 'contratosPorAno'])
+    ->whereNumber('cliente')
+    ->where('ano', '[0-9]{4}')
+    ->name('clientes.contratos');
+
+
+
+// Rotas públicas somente para consulta de fornecedores
+Route::resource('fornecedores', FornecedorController::class)
+    ->only(['index', 'show']);
+
+// Consulta os dados de origem da requisição
+Route::get('/clientes/origem', [ClienteController::class, 'origemRequisicao'])
+    ->name('clientes.origem');
+
+
+// Grupo de rotas administrativas
+Route::prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+
+        Route::get('/auditoria/clientes', [
+            ClienteController::class,
+            'auditoriaClientes'
+        ])->name('auditoria.clientes');
+
+    });
+
+// Rota para alternar o status do cliente
+Route::patch('/clientes/{id}/status', [
+    ClienteController::class,
+    'alterarStatus'
+])->name('clientes.status');

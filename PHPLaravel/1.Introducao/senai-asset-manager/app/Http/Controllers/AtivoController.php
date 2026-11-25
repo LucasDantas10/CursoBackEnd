@@ -101,4 +101,26 @@ class AtivoController extends Controller
             "detalhes" => $ativos[$codigo]
         ]);
     }
+    
+    // Retorna os contratos de um cliente por ano
+    public function contratosPorAno(int $cliente, int $ano): JsonResponse
+    {
+        $contratos = [
+            ["numero" => "CTR-001", "ano" => 2025, "valor" => 15000],
+            ["numero" => "CTR-002", "ano" => 2025, "valor" => 22000],
+            ["numero" => "CTR-003", "ano" => 2024, "valor" => 18000]
+        ];
+
+        $resultado = array_values(array_filter(
+            $contratos,
+            fn ($contrato) => $contrato["ano"] === $ano
+        ));
+
+        return response()->json([
+            "cliente" => $cliente,
+            "ano" => $ano,
+            "contratos" => $resultado
+        ]);
+    }
+
 }

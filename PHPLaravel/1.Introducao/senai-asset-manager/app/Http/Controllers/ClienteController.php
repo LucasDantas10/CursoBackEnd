@@ -6,6 +6,7 @@ use App\Models\Cliente;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class ClienteController extends Controller
 {
@@ -109,5 +110,51 @@ class ClienteController extends Controller
             "titulo"    => $setor ? "Setor: ". ucfirst($setor) : "Todos os Setores"
         ]);
     }
+
+    
+    /**
+     * Retorna os dados de telemetria da requisição
+     */
+    public function origemRequisicao(Request $request): JsonResponse
+    {
+        return response()->json([
+            "ip_cliente" => $request->ip(),
+            "user_agent" => $request->userAgent()
+        ]);
+    }
+
+    
+    /**
+     * Retorna a quantidade de parceiros ativos
+     */
+    public function auditoriaClientes(): JsonResponse
+    {
+        $total = Cliente::where("status", "ATIVO")->count();
+
+        return response()->json([
+            "total_parceiros_ativos" => $total
+        ]);
+    }
+
+        /**
+     * Alterna o status do cliente entre ATIVO e SUSPENSO
+     */
+    public function alterarStatus(Request $request, int $id): RedirectResponse
+    {
+        $cliente = Cliente::findOrFail($id);
+
+        $cliente->status = $cliente->status === "ATIVO"
+            ? "SUSPENSO"
+            : "ATIVO";
+
+        $cliente->save();
+
+        return redirect()->back()->with(
+            "sucesso",
+            "Status do cliente atualizado com sucesso!"
+        );
+    }
+
+
 
 }
